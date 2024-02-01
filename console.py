@@ -38,10 +38,10 @@ class HBNBCommand(cmd.Cmd):
         print("Have a pleasant day")
         return True
 
-    try:
-        input(prompt)
-    except EOFError as e:
-        print(e)
+try:
+    input(HBNBCommand.prompt)
+except EOFError as e:
+    print(e)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
