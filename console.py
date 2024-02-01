@@ -38,11 +38,11 @@ class HBNBCommand(cmd.Cmd):
         print("Have a pleasant day")
         return True
 
-    """
-    EOF Handling
-    """
     print(intro)
     try:
+        """
+        EOF Handling
+        """
         input(prompt)
     except EOFError as e:
         print(e)
