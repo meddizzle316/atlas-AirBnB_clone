@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
 
 
     # Exit command
-    def do_exit(self, arg):
+    def do_EOF(self, arg):
         """
         Exits console interface
 
