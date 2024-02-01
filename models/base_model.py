@@ -40,9 +40,9 @@ class BaseModel:
     def to_dict(self):
         """experimental attempt at not using vars"""
         d = {}
+        self.__dict__['created_at'] = self.created_at.isoformat()
+        self.__dict__['updated_at'] = self.updated_at.isoformat()
         for a in vars(self):
             d.update({a: getattr(self, a)})
         d['__class__'] = self.__class__.__name__
-        d['created_at'] = self.created_at.isoformat()
-        d['updated_at'] = self.updated_at.isoformat()
         return d
