@@ -18,6 +18,8 @@ class BaseModel:
         init function for Basemodel adds 
         attributes
         """
+        self.my_number = 0
+        self.name = 'default'
         self.updated_at = datetime.now()
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
@@ -27,9 +29,8 @@ class BaseModel:
         str representation of Basemodel
         prints name, id and dict
         """
-        # return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
-        return "[{}] ({}) {}.".format(self.__class__.__name__, self.id, self.__dict__)
-
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
+       
     def save(self):
         """
         updates updated_at attribute
@@ -56,7 +57,12 @@ class BaseModel:
         convert object to dictionary
         """
         self.save()
+        d = {}
         self.__dict__['__class__'] = self.__class__.__name__
         self.__dict__['updated_at'] = self.updated_at.isoformat()
         self.__dict__['created_at'] = self.created_at.isoformat()
-        return self.__dict__
+        attributes = ['my_number', 'name', '__class__', 'updated_at', 'id', 'created_at']
+        for a in attributes:
+            d.update({a: getattr(self, a)})
+        d['__class__'] = self.__class__.__name__
+        return d
