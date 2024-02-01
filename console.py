@@ -31,3 +31,6 @@ class HBNBCommand(cmd.Cmd):
         """
         print("Have a pleasant day")
         return True
+
+    if __name__ == '__main__':
+        HBNBCommand().cmd.loop()
