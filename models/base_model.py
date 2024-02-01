@@ -26,7 +26,8 @@ class BaseModel:
             self.updated_at = datetime.now()
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-
+            self.name = 'default'
+            self.my_number = 2
     def __str__(self):
         """
         str representation of Basemodel
