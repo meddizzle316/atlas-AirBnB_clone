@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
 
 
     # Exit command
-    def do_exit(self, arg):
+    def do_EOF(self, arg):
         """
         Exits console interface
 
@@ -37,15 +37,6 @@ class HBNBCommand(cmd.Cmd):
         """
         print("Have a pleasant day")
         return True
-
-    print(intro)
-    try:
-        """
-        EOF Handling
-        """
-        input(prompt)
-    except EOFError as e:
-        print(e)
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
