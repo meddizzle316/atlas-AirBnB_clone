@@ -21,7 +21,7 @@ class BaseModel:
 
     def __str__(self):
         """str representation of Basemodel"""
-        return f"[{self.__class__.__name__}] ({self.id} <{self.__dict__}>)"
+        return f"[{self.__class__.__name__}] ({self.id} {self.__dict__})"
 
     def save(self):
         """updates updated_at attribute"""
