@@ -28,10 +28,21 @@ class BaseModel:
         """updates updated_at attribute"""
         self.updated_at = datetime.now()
 
+    # def to_dict(self):
+    #     """converts object to dict to prepare for json conversion"""
+    #     new_dict = vars(self)
+    #     new_dict['__class__'] = self.__class__.__name__
+    #     new_dict['created_at'] = self.created_at.isoformat()
+    #     new_dict['updated_at'] = self.updated_at.isoformat()
+    #     return new_dict
+    
+
     def to_dict(self):
-        """converts object to dict to prepare for json conversion"""
-        new_dict = asdict(self)
-        new_dict['__class__'] = self.__class__.__name__
-        new_dict['created_at'] = self.created_at.isoformat()
-        new_dict['updated_at'] = self.updated_at.isoformat()
-        return new_dict
+        """experimental attempt at not using vars"""
+        d = {}
+        for a in vars(self):
+            d.update({a: getattr(self, a)})
+        d['__class__'] = self.__class__.__name__
+        d['created_at'] = self.created_at.isoformat()
+        d['updated_at'] = self.updated_at.isoformat()
+        return d
