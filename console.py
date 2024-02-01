@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
 try:
-    input(prompt)
+    input(HBNBCommand.prompt)
 except EOFError as e:
     print(e)
 
