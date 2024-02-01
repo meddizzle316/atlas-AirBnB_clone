@@ -15,7 +15,8 @@ class BaseModel:
 
     def __init__(self):
         """
-        init function for Basemodel
+        init function for Basemodel adds 
+        attributes
         """
         self.updated_at = datetime.now()
         self.id = str(uuid.uuid4())
@@ -24,12 +25,14 @@ class BaseModel:
     def __str__(self):
         """
         str representation of Basemodel
+        prints name, id and dict
         """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
 
     def save(self):
         """
         updates updated_at attribute
+        uses datetime.now() to set time
         """
         self.updated_at = datetime.now()
 
@@ -48,10 +51,11 @@ class BaseModel:
 
     def to_dict(self):
         """
-        yet another attempt
+        yet another attempt to 
+        convert object to dictionary
         """
         self.save()
-        self.__dict__['__class__']
+        self.__dict__['__class__'] = self.__class__.__name__
         self.__dict__['updated_at'] = self.updated_at.isoformat()
         self.__dict__['created_at'] = self.created_at.isoformat()
         return self.__dict__
