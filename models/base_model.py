@@ -5,8 +5,9 @@ in AirBnB project
 """
 from datetime import datetime
 import uuid
+from dataclasses import dataclass, asdict
 
-
+@dataclass
 class BaseModel:
     """
     basemodel class -- original class
@@ -29,7 +30,7 @@ class BaseModel:
 
     def to_dict(self):
         """converts object to dict to prepare for json conversion"""
-        new_dict = vars(self)
+        new_dict = asdict(self)
         new_dict['__class__'] = self.__class__.__name__
         new_dict['created_at'] = self.created_at.isoformat()
         new_dict['updated_at'] = self.updated_at.isoformat()
