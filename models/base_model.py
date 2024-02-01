@@ -27,7 +27,8 @@ class BaseModel:
         str representation of Basemodel
         prints name, id and dict
         """
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
+        # return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
+        return "[{}] ({}) {}.".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """
