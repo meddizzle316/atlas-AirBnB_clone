@@ -12,8 +12,8 @@ class HBNBCommand(cmd.Cmd):
     Attributes and methods for Airbnb console
     """
 
-    intro = "Type help or ? to list commands"
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
+
 
     # Exit command
     def do_EOF(self, arg):
