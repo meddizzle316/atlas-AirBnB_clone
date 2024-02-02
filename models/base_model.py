@@ -5,6 +5,7 @@ in AirBnB project
 """
 from datetime import datetime
 import uuid
+from models import storage
 
 
 class BaseModel:
@@ -28,6 +29,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.name = 'default'
             self.my_number = 2
+            storage.new() ## hopefully this is what  they wanted
     def __str__(self):
         """
         str representation of Basemodel
@@ -40,20 +42,8 @@ class BaseModel:
         updates updated_at attribute
         uses datetime.now() to set time
         """
+        storage.save()
         self.updated_at = datetime.now()
-
-    # def to_dict(self):
-    #     """
-    #     experimental attempt at not using vars
-    #     """
-    #     self.save()
-    #     d = {}
-    #     for a in vars(self):
-    #         d.update({a: getattr(self, a)})
-    #     d['__class__'] = self.__class__.__name__
-    #     d['created_at'] = self.created_at.isoformat()
-    #     d['updated_at'] = self.updated_at.isoformat()
-    #     return d
 
     def to_dict(self):
         """
