@@ -12,9 +12,32 @@ class HBNBCommand(cmd.Cmd):
     Attributes and methods for Airbnb console
     """
 
-    prompt = "(hbnb)"
-    intro = "Type help or ? to list commands"
+    prompt = "(hbnb) "
 
+    def emptyline(self):
+        """
+        Called when empty line is passed
+        Useed to override command to keep from repeating previous command
+        """
+        pass
+
+    def default(self, line: str):
+        self.line = line.strip()
+
+    def input_checker(self, buffer):
+        """
+        Checks to see if input is empty or valid
+
+        Args:
+            buffer (str): User input if there is any
+
+        Returns:
+            _type_: _description_
+        """
+        if self.line:
+            print(self.line)
+        else:
+            pass
 
     # Exit command
     def do_EOF(self, arg):
