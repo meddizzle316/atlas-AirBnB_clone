@@ -12,7 +12,6 @@ class HBNBCommand(cmd.Cmd):
     Attributes and methods for Airbnb console
     """
 
-    intro = "Type help or ? to list commands."
     prompt = "(hbnb) "
 
 
