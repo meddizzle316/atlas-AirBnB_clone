@@ -4,6 +4,7 @@ Console for Airbnb clone
 """
 import cmd
 from models.base_model import BaseModel
+import json
 
 
 
@@ -35,14 +36,14 @@ class HBNBCommand(cmd.Cmd):
             _type_: _description_
         """
         if self.line:
-            print(self.line)
+            return self.line
         else:
             pass
 
     # Exit command
     def do_EOF(self, arg):
         """
-        Exits console interface
+        Command that exits console interface
 
         Returns:
             True
@@ -53,13 +54,34 @@ class HBNBCommand(cmd.Cmd):
     # Quit command
     def do_quit(self, arg):
         """
-        Quits console interface
+        Command that quits console interface
 
         Returns:
             True
         """
         print("Have a pleasant day")
         return True
+
+    # Create command
+    def do_create(self, arg):
+        """
+        Command that creates a new instance of the class
+
+        Returns:
+            A new instance of the class and saves it to a JSON
+        """
+        buffer = arg.split()
+        if not buffer:
+            print("** class name missing **")
+            return
+        buffer = buffer[0]
+        if buffer == "BaseModel":
+            instance = BaseModel()
+            instance.to_dict()
+            print(f"{instance.id}")
+        else:
+            print("** class doesn't exsist **")
+        
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
