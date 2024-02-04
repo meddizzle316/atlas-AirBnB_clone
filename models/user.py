@@ -2,38 +2,22 @@
 """
 A class to store user data
 """
+import email
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    # email, password, first_name, last_name = ''
-    # email = ''
-    # password = ''
-    # first_name = ''
-    # last_name = ''
     
     def __init__(self, **kwargs):
-        email = ''
-        password = ''
-        first_name = ''
-        last_name = ''
-
-        if not isinstance(email, str):
-            raise TypeError("Email must be a string")
-        else:
-            self.email = kwargs.get('email', '')
-        if not isinstance(password, str):
-            raise TypeError("Password must be a string")
-        else:
-            self.password = kwargs.get('password', '')
-        if not isinstance(first_name, str):
-            raise TypeError("invalid First name")
-        else:
-            self.first_name = kwargs.get('first_name', '')
-        if not isinstance(last_name, str):
-            raise TypeError("invalid last name")
-        else:
-            self.last_name = kwargs.get('last_name', '')
+        
+        if "email" in kwargs and isinstance(kwargs["email"], str):
+            self.email = kwargs["email"]
+        if "password" in kwargs and isinstance(kwargs["password"], str):
+            self.password = kwargs["password"]
+        if "first_name" in kwargs and isinstance(kwargs["first_name"], str):
+            self.first_name = kwargs["first_name"]
+        if "last_name" in kwargs and isinstance(kwargs["last_name"], str):
+            self.last_name = kwargs["last_name"]
 
         def to_dict(self):
             return {
