@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save() #converts that filestorage dictionary to json in 'file.json'
             print(f"{instance.id}")
         else:
-            print("** class doesn't exsist **")
+            print("** class doesn't exist **")
         
     #prints string representation of an instance using class name and id
     def do_show(self, arg):
