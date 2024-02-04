@@ -7,6 +7,7 @@ from models.base_model import BaseModel
 
 class User(BaseModel):
     def __init__(self, *args, **kwargs):
+        super().__init__(self, id)
         self.email = kwargs.get('email', '')
         self.password = kwargs.get('password', '')
         self.first_name = kwargs.get('first_name', '')
