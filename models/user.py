@@ -9,7 +9,11 @@ from models.base_model import BaseModel
 class User(BaseModel):
     
     def __init__(self, **kwargs):
-        
+        self.email = ''
+        self.password = ''
+        self.first_name = ''
+        self.last_name = ''
+
         if "email" in kwargs and isinstance(kwargs["email"], str):
             self.email = kwargs["email"]
         if "password" in kwargs and isinstance(kwargs["password"], str):
