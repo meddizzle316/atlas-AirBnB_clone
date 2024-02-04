@@ -5,7 +5,7 @@ Console for Airbnb clone
 import cmd
 from models.base_model import BaseModel
 import json
-
+from models.engine.file_storage import FileStorage
 
 
 class HBNBCommand(cmd.Cmd):
