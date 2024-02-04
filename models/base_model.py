@@ -27,7 +27,7 @@ class BaseModel:
             kwargs['updated_at'] = datetime.fromisoformat(updated_at_str)
             for k, v in kwargs.items():
                 setattr(self, k, v)
-            print("kwargs has been used")
+
         else:
             self.updated_at = datetime.now()
             self.id = str(uuid.uuid4())
@@ -35,7 +35,7 @@ class BaseModel:
             self.name = 'default'
             self.my_number = 2
             storage.new(self) ## hopefully this is what  they wanted
-            print("kwargs has not been used")
+
 
     def __str__(self):
         """
