@@ -16,7 +16,6 @@ class User(BaseModel):
         self.last_name = kwargs.get('last_name', "")
 
         def to_dict(self):
-            super().__init__(*args)
             return {
                 "id": self.id,
                 "email": self.email,
