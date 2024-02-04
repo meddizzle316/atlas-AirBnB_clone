@@ -9,6 +9,7 @@ from models.engine.file_storage import FileStorage
 from models import storage
 
 
+
 class HBNBCommand(cmd.Cmd):
     """
     Attributes and methods for Airbnb console
@@ -111,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
                 return
             if class_and_id in objects.keys():
-                print(objects[class_and_id])
+                    print(objects[class_and_id])
             else:
                 print("** instance id missing **")
         else:
@@ -161,11 +162,52 @@ class HBNBCommand(cmd.Cmd):
             list_of_objects = []
             for id, object in objects.items():
                 if buffer[0].find(id):
-                    print("buffer has been found")
-                    list_of_objects.append(objects[id])
+                    list_of_objects.append(str(objects[id]))
                 else:
                     print("** instance id missing **")
             print(list_of_objects)
+        else:
+            print("** class doesn't exist **")
+
+    def do_update(self, arg):
+        """
+         Updates an instance based on the class name 
+         and id by adding or updating attribute
+         (save the change into the JSON file)
+        """
+        buffer = arg.split()
+        if not buffer:
+            print("** class name missing **")
+            return
+        if buffer[0] == "BaseModel":
+            storage.save()
+            storage.reload()
+            objects = storage.all()
+            try:
+                class_and_id = f"{buffer[0]}.{buffer[1]}"
+            except IndexError:
+                print("** instance id missing **")
+                return
+            if class_and_id in objects.keys():
+                if len(buffer) == 2:
+                    print("** attribute name missing **")
+                    return
+                if len(buffer) == 3:
+                    print("** value missing **")
+                    return
+                attribute_name = buffer[2]
+                attribute_value = buffer[3]
+                print(type(attribute_name))
+                attribute_value = int(attribute_value)                
+                print(type(attribute_value)) # TODO dynamically change type based on attribute's type
+                if hasattr(objects[class_and_id], attribute_name):
+                    objects[class_and_id].update(attribute_value)
+                    storage.save()
+                    print("the attribute has been found")
+                else:
+                    print("the attribute has not been found")
+            else:
+                print("** no instance found **")
         else:
             print("** class doesn't exist **")
 
