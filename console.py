@@ -108,12 +108,12 @@ class HBNBCommand(cmd.Cmd):
             try:
                 class_and_id = f"{buffer[0]}.{buffer[1]}"
             except IndexError:
-                print("** class doesn't exist **")
+                print("** instance id missing **")
                 return
             if class_and_id in objects.keys():
                 print(objects[class_and_id])
             else:
-                print("** instance id missing")
+                print("** instance id missing **")
         else:
             print("** class doesn't exist **")
 
@@ -134,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
             try:
                 class_and_id = f"{buffer[0]}.{buffer[1]}"
             except IndexError:
-                print("** class doesn't exist **")
+                print("** instance id missing **")
                 return
             class_and_id = f"{buffer[0]}.{buffer[1]}"
             if class_and_id in objects.keys():
