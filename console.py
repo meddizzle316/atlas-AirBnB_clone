@@ -105,7 +105,11 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
             storage.reload()
             objects = storage.all()
-            class_and_id = f"{buffer[0]}.{buffer[1]}"
+            try:
+                class_and_id = f"{buffer[0]}.{buffer[1]}"
+            except IndexError:
+                print("** class doesn't exist **")
+                return
             if class_and_id in objects.keys():
                 print(objects[class_and_id])
             else:
@@ -127,6 +131,11 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
             storage.reload()
             objects = storage.all()
+            try:
+                class_and_id = f"{buffer[0]}.{buffer[1]}"
+            except IndexError:
+                print("** class doesn't exist **")
+                return
             class_and_id = f"{buffer[0]}.{buffer[1]}"
             if class_and_id in objects.keys():
                 del objects[class_and_id]
