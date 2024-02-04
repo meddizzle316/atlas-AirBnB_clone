@@ -59,10 +59,10 @@ class BaseModel:
         """
         d = {}
         self.__dict__['__class__'] = self.__class__.__name__
-        self.__dict__['updated_at'] = self.updated_at.isoformat()
-        self.__dict__['created_at'] = self.created_at.isoformat()
         attributes = ['my_number', 'name', '__class__', 'updated_at', 'id', 'created_at']
         for a in attributes:
             d.update({a: getattr(self, a)})
         d['__class__'] = self.__class__.__name__
+        d['updated_at'] = self.updated_at.isoformat()
+        d['created_at'] = self.created_at.isoformat()
         return d
