@@ -145,5 +145,29 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    def do_all(self, arg):
+        """
+        Prints all string representation of all instances 
+        based or not on the class name.
+        """
+        buffer = arg.split()
+        if not buffer:
+            print("** class name missing **")
+            return
+        if buffer[0] == "BaseModel":
+            storage.save()
+            storage.reload()
+            objects = storage.all()
+            list_of_objects = []
+            for id, object in objects.items():
+                if buffer[0].find(id):
+                    print("buffer has been found")
+                    list_of_objects.append(objects[id])
+                else:
+                    print("** instance id missing **")
+            print(list_of_objects)
+        else:
+            print("** class doesn't exist **")
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
