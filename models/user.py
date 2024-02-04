@@ -33,7 +33,7 @@ class User(BaseModel):
         if not isinstance(last_name, str):
             raise TypeError("invalid last name")
         else:
-            self.last_name = kwargs.get('last_name', "")
+            self.last_name = kwargs.get('last_name', '')
 
         def to_dict(self):
             return {
