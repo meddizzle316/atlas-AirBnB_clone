@@ -9,21 +9,21 @@ class User(BaseModel):
     """
     class that stores User data
     """
+    email = ''
+    password = ''
+    first_name = ''
+    last_name = ''
     
     def __init__(self):
         """
         Initialization
         """
-        email = ''
-        password = ''
-        first_name = ''
-        last_name = ''
 
-        def to_dict(self):
-            return {
-                "id": id,
-                "email": email,
-                "password": password,
-                "first_name": first_name,
-                "last_name": last_name
+    def to_dict(self):
+        return {
+            "id": id,
+            "email": User.email,
+            "password": User.password,
+            "first_name": User.first_name,
+            "last_name": User.last_name
             }
