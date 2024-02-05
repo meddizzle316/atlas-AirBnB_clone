@@ -3,7 +3,7 @@
 A class to store user data
 """
 from models.base_model import BaseModel
-
+import uuid
 
 class User(BaseModel):
     """
@@ -18,10 +18,11 @@ class User(BaseModel):
         """
         Initialization
         """
+        super().__init__()
 
     def to_dict(self):
         return {
-            "id": id,
+            "id": str(uuid.uuid4()),
             "email": User.email,
             "password": User.password,
             "first_name": User.first_name,

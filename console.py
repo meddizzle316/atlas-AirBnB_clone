@@ -114,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
             if class_and_id in objects.keys():
                     print(objects[class_and_id])
             else:
-                print("** instance id missing **")
+                print("** no instance found **")
         else:
             print("** class doesn't exist **")
   
