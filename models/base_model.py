@@ -62,7 +62,7 @@ class BaseModel:
         for attribute in self.__dict__.keys():
             d.update({attribute: getattr(self, attribute)})
         d['__class__'] = self.__class__.__name__
-        if d['__class__'] == "BaseModel":
+        if d['__class__'] == "BaseModel" or d['__class__'] == "User":
             d['updated_at'] = self.updated_at.isoformat()
             d['created_at'] = self.created_at.isoformat()
         return d
@@ -74,4 +74,4 @@ class BaseModel:
             if isinstance(value, str):
                 value = value.replace('"', '')
                 value = value.replace("'", '')
-            setattr(self, key, value)
+            setattr(self, key, value) #TODO should also update self.updated_at in this function
