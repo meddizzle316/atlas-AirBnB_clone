@@ -76,16 +76,9 @@ class HBNBCommand(cmd.Cmd):
         if not buffer:
             print("** class name missing **")
             return
-        buffer = buffer[0]
-        if buffer == "BaseModel": 
-            """
-            need a "class doesn't exist" case -- (meaning that we 
-            have to have some way of iterating through all
-            existing classes -- I'm thinking something like 
-            my classes function in FileStorage and how that allows
-            me to do reload properly)
-            """
-            instance = BaseModel()
+        valid_classes = storage.classes()
+        if buffer[0] in valid_classes.keys():
+            instance = valid_classes[buffer[0]]()
             storage.new(instance)  #saves instance to filestorage dictionary
             storage.save() #converts that filestorage dictionary to json in 'file.json'
             print(f"{instance.id}")
@@ -102,7 +95,8 @@ class HBNBCommand(cmd.Cmd):
         if not buffer:
             print("** class name missing **")
             return
-        if buffer[0] == "BaseModel":
+        valid_classes = storage.classes()
+        if buffer[0] in valid_classes.keys():
             storage.save()
             storage.reload()
             objects = storage.all()
@@ -129,7 +123,8 @@ class HBNBCommand(cmd.Cmd):
         if not buffer:
             print("** class name missing **")
             return
-        if buffer[0] == "BaseModel":
+        valid_classes = storage.classes()
+        if buffer[0] in valid_classes.keys():
             storage.reload()
             objects = storage.all()
             try:
@@ -155,7 +150,8 @@ class HBNBCommand(cmd.Cmd):
         if not buffer:
             print("** class name missing **")
             return
-        if buffer[0] == "BaseModel":
+        valid_classes = storage.classes()
+        if buffer[0] in valid_classes.keys():
             storage.reload()
             objects = storage.all()
             list_of_objects = []
@@ -179,7 +175,8 @@ class HBNBCommand(cmd.Cmd):
         if not buffer:
             print("** class name missing **")
             return
-        if buffer[0] == "BaseModel":
+        valid_classes = storage.classes()
+        if buffer[0] in valid_classes.keys():
             storage.reload()
             objects = storage.all()
             try:
@@ -196,7 +193,7 @@ class HBNBCommand(cmd.Cmd):
                     return
                 attribute_name = buffer[2]
                 attribute_value = buffer[3]
-                if hasattr(objects[class_and_id], attribute_name):
+                if hasattr(objects[class_and_id], attribute_name): #TODO put this in a separate function ?
                     class_attribute = getattr(objects[class_and_id], attribute_name)
                     if type(class_attribute) is str:
                         pass
