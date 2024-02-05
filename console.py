@@ -143,7 +143,7 @@ class HBNBCommand(cmd.Cmd):
                 del objects[class_and_id]
                 storage.save() 
             else:
-                print("** instance id missing **")
+                print("** no instance found **")
         else:
             print("** class doesn't exist **")
 
