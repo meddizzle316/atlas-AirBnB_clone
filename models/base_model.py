@@ -67,12 +67,12 @@ class BaseModel:
         d['created_at'] = self.created_at.isoformat()
         return d
 
-    def update(self, *args, **kwargs):
+    # def update(self, key, value):
+    def update(self, **kwargs):
         """updates the BaseModel class"""
-        attributes = ['my_number', 'name', '__class__', 'updated_at', 'id', 'created_at']
-        if not any(args):
-            for key, value in kwargs.items():
-                setattr(self, key, value)
-        else:
-            for a in range(len(args)):
-                setattr(self, attributes[a], args[a])
+        print(kwargs)
+        for key, value in kwargs.items():
+            if isinstance(value, str):
+                value = value.replace('"', '')
+                value = value.replace("'", '')
+            setattr(self, key, value)

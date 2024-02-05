@@ -117,7 +117,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
-
+  
+    
     #Deletes an instance using class and id
     def do_destroy(self, arg):
         """
@@ -169,6 +170,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+
     def do_update(self, arg):
         """
          Updates an instance based on the class name 
@@ -196,12 +198,17 @@ class HBNBCommand(cmd.Cmd):
                     print("** value missing **")
                     return
                 attribute_name = buffer[2]
-                attribute_value = buffer[3]
-                print(type(attribute_name))
-                attribute_value = int(attribute_value)                
-                print(type(attribute_value)) # TODO dynamically change type based on attribute's type
+                attribute_value = buffer[3]              
                 if hasattr(objects[class_and_id], attribute_name):
-                    objects[class_and_id].update(attribute_value)
+                    class_attribute = getattr(objects[class_and_id], attribute_name)
+                    if type(class_attribute) is str:
+                        pass
+                    elif type(class_attribute) is int:
+                         attribute_value = int(attribute_value)
+                    elif type(class_attribute) is float:
+                         attribute_value = float(attribute_value)
+                    dict = {attribute_name:attribute_value}
+                    objects[class_and_id].update(**dict)
                     storage.save()
                     print("the attribute has been found")
                 else:
