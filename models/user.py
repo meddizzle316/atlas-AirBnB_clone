@@ -2,14 +2,28 @@
 """
 A class to store user data
 """
-import email
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
+    """
+    class that stores User data
+    """
+    email = ''
+    password = ''
+    first_name = ''
+    last_name = ''
     
     def __init__(self):
-        email = ''
-        password = ''
-        first_name = ''
-        last_name = ''
+        """
+        Initialization
+        """
+
+    def to_dict(self):
+        return {
+            "id": id,
+            "email": User.email,
+            "password": User.password,
+            "first_name": User.first_name,
+            "last_name": User.last_name
+            }
