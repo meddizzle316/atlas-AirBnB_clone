@@ -130,7 +130,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         if buffer[0] == "BaseModel":
-            storage.save()
             storage.reload()
             objects = storage.all()
             try:
@@ -157,7 +156,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         if buffer[0] == "BaseModel":
-            storage.save()
             storage.reload()
             objects = storage.all()
             list_of_objects = []
@@ -182,7 +180,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         if buffer[0] == "BaseModel":
-            storage.save()
             storage.reload()
             objects = storage.all()
             try:
@@ -198,7 +195,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** value missing **")
                     return
                 attribute_name = buffer[2]
-                attribute_value = buffer[3]              
+                attribute_value = buffer[3]
                 if hasattr(objects[class_and_id], attribute_name):
                     class_attribute = getattr(objects[class_and_id], attribute_name)
                     if type(class_attribute) is str:
@@ -207,12 +204,9 @@ class HBNBCommand(cmd.Cmd):
                          attribute_value = int(attribute_value)
                     elif type(class_attribute) is float:
                          attribute_value = float(attribute_value)
-                    dict = {attribute_name:attribute_value}
-                    objects[class_and_id].update(**dict)
-                    storage.save()
-                    print("the attribute has been found")
-                else:
-                    print("the attribute has not been found")
+                dict = {attribute_name:attribute_value}
+                objects[class_and_id].update(**dict)
+                storage.save()
             else:
                 print("** no instance found **")
         else:
