@@ -155,11 +155,13 @@ class HBNBCommand(cmd.Cmd):
             storage.reload()
             objects = storage.all()
             list_of_objects = []
-            for id, object in objects.items():
-                if buffer[0].find(id):
+            for id in objects.keys():
+                full_name = buffer[0] + "." + objects[id].__dict__['id'] 
+                if full_name == id:
                     list_of_objects.append(str(objects[id]))
-                else:
+            if list_of_objects == []:
                     print("** instance id missing **")
+                    return
             print(list_of_objects)
         else:
             print("** class doesn't exist **")
@@ -203,7 +205,7 @@ class HBNBCommand(cmd.Cmd):
                          attribute_value = float(attribute_value)
                 dict = {attribute_name:attribute_value}
                 objects[class_and_id].update(**dict)
-                storage.save()
+                objects[class_and_id].save()
             else:
                 print("** no instance found **")
         else:

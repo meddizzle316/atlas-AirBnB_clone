@@ -1,0 +1,58 @@
+{
+    "User.c7b58e7e-5b22-4e6b-8480-a46432c7ca9e": {
+        "updated_at": "2024-02-06T10:36:19.922763",
+        "id": "c7b58e7e-5b22-4e6b-8480-a46432c7ca9e",
+        "created_at": "2024-02-06T10:36:19.922809",
+        "name": "default",
+        "my_number": 2,
+        "__class__": "User"
+    },
+    "City.42af29f9-6818-4d82-aa44-384b9244dceb": {
+        "updated_at": "2024-02-06T10:36:22.547604",
+        "id": "42af29f9-6818-4d82-aa44-384b9244dceb",
+        "created_at": "2024-02-06T10:36:22.547663",
+        "name": "default",
+        "my_number": 2,
+        "__class__": "City"
+    },
+    "Review.0fbda6a9-d026-4157-9435-fe161d67c0bb": {
+        "updated_at": "2024-02-06T10:36:27.679653",
+        "id": "0fbda6a9-d026-4157-9435-fe161d67c0bb",
+        "created_at": "2024-02-06T10:36:27.679710",
+        "name": "default",
+        "my_number": 2,
+        "__class__": "Review"
+    },
+    "BaseModel.4779e6f0-a2ac-4681-b5b6-565304b148a5": {
+        "updated_at": "2024-02-06T10:38:23.562031",
+        "id": "4779e6f0-a2ac-4681-b5b6-565304b148a5",
+        "created_at": "2024-02-06T10:38:23.562101",
+        "name": "new_name",
+        "my_number": 2,
+        "__class__": "BaseModel"
+    },
+    "City.c1da6d39-1164-4e83-ab98-d47ec5536434": {
+        "updated_at": "2024-02-06T10:57:59.299981",
+        "id": "c1da6d39-1164-4e83-ab98-d47ec5536434",
+        "created_at": "2024-02-06T10:57:59.300042",
+        "name": "default",
+        "my_number": 2,
+        "__class__": "City"
+    },
+    "City.67b234c5-a99f-4f88-a5d1-f615d4cdb2b0": {
+        "updated_at": "2024-02-06T10:58:01.356259",
+        "id": "67b234c5-a99f-4f88-a5d1-f615d4cdb2b0",
+        "created_at": "2024-02-06T10:58:01.356303",
+        "name": "default",
+        "my_number": 2,
+        "__class__": "City"
+    },
+    "User.9e42e30b-be19-43af-b7dd-fd172408f10d": {
+        "updated_at": "2024-02-06T11:08:15.682447",
+        "id": "9e42e30b-be19-43af-b7dd-fd172408f10d",
+        "created_at": "2024-02-06T11:08:15.682465",
+        "name": "",
+        "my_number": 2,
+        "__class__": "User"
+    }
+}
