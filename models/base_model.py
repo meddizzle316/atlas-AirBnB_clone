@@ -50,7 +50,7 @@ class BaseModel:
         uses datetime.now() to set time
         """
         storage.save()
-        # self.updated_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """
@@ -75,3 +75,4 @@ class BaseModel:
                 value = value.replace('"', '')
                 value = value.replace("'", '')
             setattr(self, key, value) #TODO should also update self.updated_at in this function
+            self.save()
