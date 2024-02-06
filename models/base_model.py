@@ -42,7 +42,7 @@ class BaseModel:
         str representation of Basemodel
         prints name, id and dict
         """
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
        
     def save(self):
         """
@@ -59,20 +59,19 @@ class BaseModel:
         """
         d = {}
         self.__dict__['__class__'] = self.__class__.__name__
-        attributes = ['my_number', 'name', '__class__', 'updated_at', 'id', 'created_at']
-        for a in attributes:
-            d.update({a: getattr(self, a)})
+        for attribute in self.__dict__.keys():
+            d.update({attribute: getattr(self, attribute)})
         d['__class__'] = self.__class__.__name__
+        # if d['__class__'] == "BaseModel" or d['__class__'] == "User":
         d['updated_at'] = self.updated_at.isoformat()
         d['created_at'] = self.created_at.isoformat()
         return d
 
-    def update(self, *args, **kwargs):
+    # def update(self, key, value):
+    def update(self, **kwargs):
         """updates the BaseModel class"""
-        attributes = ['my_number', 'name', '__class__', 'updated_at', 'id', 'created_at']
-        if not any(args):
-            for key, value in kwargs.items():
-                setattr(self, key, value)
-        else:
-            for a in range(len(args)):
-                setattr(self, attributes[a], args[a])
+        for key, value in kwargs.items():
+            if isinstance(value, str):
+                value = value.replace('"', '')
+                value = value.replace("'", '')
+            setattr(self, key, value) #TODO should also update self.updated_at in this function
