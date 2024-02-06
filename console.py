@@ -195,7 +195,7 @@ class HBNBCommand(cmd.Cmd):
                     return
                 attribute_name = buffer[2]
                 attribute_value = buffer[3]
-                if hasattr(objects[class_and_id], attribute_name): #TODO put this in a separate function ?
+                if hasattr(objects[class_and_id], attribute_name): #TODO only works when attribute already exists
                     class_attribute = getattr(objects[class_and_id], attribute_name)
                     if type(class_attribute) is str:
                         pass
@@ -205,7 +205,7 @@ class HBNBCommand(cmd.Cmd):
                          attribute_value = float(attribute_value)
                 dict = {attribute_name:attribute_value}
                 objects[class_and_id].update(**dict)
-                objects[class_and_id].save()
+                storage.save()
             else:
                 print("** no instance found **")
         else:
