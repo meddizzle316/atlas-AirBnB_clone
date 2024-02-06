@@ -11,9 +11,9 @@ class TestReview(unittest.TestCase):
         self.assertTrue(isinstance(Review.text, str))
 
     def test_true_review(self):
-        self.assertTrue(hasattr(Review, Review.place_id))
-        self.assertTrue(hasattr(Review, Review.user_id))
-        self.assertTrue(hasattr(Review, Review.text))
+        self.assertTrue(hasattr(Review, "place_id"))
+        self.assertTrue(hasattr(Review, "user_id"))
+        self.assertTrue(hasattr(Review, "text"))
 
     def test_equal_review(self):
         self.assertEqual(Review.place_id, "")
