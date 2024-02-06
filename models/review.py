@@ -7,6 +7,10 @@ class Review(BaseModel):
     """
     Class that stores review data
     """
+    place_id = ''
+    user_id = ''
+    text = ''
+    
     def __init__(self, *args, **kwargs):
         """
         Initialization of the State class
