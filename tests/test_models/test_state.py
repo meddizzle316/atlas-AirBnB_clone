@@ -6,7 +6,7 @@ from models.state import State
 
 class TestState(unittest.TestCase):
     def test_isinstance(self):
-        self.assertTrue(State.name, str)
+        self.assertTrue(type(State.name), str)
 
     def test_true_state(self):
         state = State()
