@@ -6,7 +6,7 @@ from models.base_model import BaseModel
 import os
 
 class TestFileStorage(unittest.TestCase):
-    def test_file_path(self):
+    def test_file_storage__file_path(self):
         storage = FileStorage()
         basemodel = BaseModel()
         storage.save()
