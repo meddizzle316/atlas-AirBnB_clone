@@ -32,7 +32,7 @@ class BaseModel:
             self.updated_at = datetime.now()
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-            self.name = 'default'
+            self.name = ''
             self.my_number = 2
             storage.new(self) ## hopefully this is what  they wanted
 
@@ -42,7 +42,7 @@ class BaseModel:
         str representation of Basemodel
         prints name, id and dict
         """
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__})"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
        
     def save(self):
         """
@@ -50,7 +50,7 @@ class BaseModel:
         uses datetime.now() to set time
         """
         storage.save()
-        # self.updated_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """
@@ -59,10 +59,20 @@ class BaseModel:
         """
         d = {}
         self.__dict__['__class__'] = self.__class__.__name__
-        attributes = ['my_number', 'name', '__class__', 'updated_at', 'id', 'created_at']
-        for a in attributes:
-            d.update({a: getattr(self, a)})
+        for attribute in self.__dict__.keys():
+            d.update({attribute: getattr(self, attribute)})
         d['__class__'] = self.__class__.__name__
+        # if d['__class__'] == "BaseModel" or d['__class__'] == "User":
         d['updated_at'] = self.updated_at.isoformat()
         d['created_at'] = self.created_at.isoformat()
         return d
+
+    # def update(self, key, value):
+    def update(self, **kwargs):
+        """updates the BaseModel class"""
+        for key, value in kwargs.items():
+            if isinstance(value, str):
+                value = value.replace('"', '')
+                value = value.replace("'", '')
+            setattr(self, key, value) #TODO should also update self.updated_at in this function
+            self.save()
