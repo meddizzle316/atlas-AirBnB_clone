@@ -7,6 +7,7 @@
 
 .places :last-child {
     grid-column: 1 / -1;
+    justify-self: center;
 }
 
 .places h1 {
@@ -14,8 +15,6 @@
     padding-left: 20px;
     grid-column: 1 / -1;
     justify-self: start;
-    /* display: flex;
-    justify-content: flex-start; */
 }
 
 .places-article {
