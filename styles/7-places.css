@@ -1,0 +1,35 @@
+.places {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-rows: auto; */
+}  
+
+
+.places :last-child {
+    grid-column: 1 / -1;
+}
+
+.places h1 {
+    font-size: 30px;
+    padding-left: 20px;
+    grid-column: 1 / -1;
+    justify-self: start;
+    /* display: flex;
+    justify-content: flex-start; */
+}
+
+.places-article {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: #FF5A5F 1px solid;
+    border-radius: 4px;
+ 
+    /* flex-direction: column;
+    justify-content: center; */
+}
+
+.places-article h2 {
+    font-size: 30px;
+    text-align: center;
+}

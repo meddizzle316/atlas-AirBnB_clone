@@ -1,0 +1,17 @@
+footer {
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    border-top: 1px #CCCCCC solid;
+    /* was reason for border -- needs "solid" */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 1rem;
+    display: grid;
+    place-items: center;
+}
+
+
